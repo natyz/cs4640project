@@ -6,4 +6,46 @@
 h3, p { display: inline; }
 #notebtn {
     background-color: #e7e7e7; 
-    color: black;} /* Gray */ 
+    color: black;
+} /* Gray */ 
+.notebtn:focus {
+  background-color: #eef091;
+}
+
+.square {
+  float:left;
+  position: relative;
+  width: 10%;
+  padding-bottom :10%; /* = width for a 1:1 aspect ratio */
+  margin:1.66%;
+  background-color: #cfc;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+}
+
+.square:hover{
+  background-color: #FF00FF;
+}
+
+.content {
+  position:absolute;
+  height:90%; /* = 100% - 2*5% padding */
+  width:90%; /* = 100% - 2*5% padding */
+  padding: 5%;
+  
+}
+.table{
+  display:table;
+  width:100%;
+  height:100%;
+}
+.table-cell{
+  display:table-cell;
+  vertical-align:middle;
+}
+.addnotebtn{
+  position:absolute;
+    bottom: 5%;
+    right:20%;
+}

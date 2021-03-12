@@ -13,7 +13,7 @@
 </head>
 <header>  
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">PeronsalNotes</a>
+      <a class="navbar-brand" href="home.html">PeronsalNotes</a>
     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -68,6 +68,7 @@
           <button class="notebtn" onclick="underlineText()"><u>U</u></button>
         </div>
         <div class="span4 text-right">
+          <button onclick="saveNote()">SAVE</button>
             <button onclick="deleteNote()">DELETE</button>
         </div>
       </div>
@@ -88,5 +89,6 @@
   date_func();
   // ARROW FUNCTION
   deleteNote = () => alert("Deleted");
+  saveNote = () => alert("Saved");
 </script>
 </html>  
