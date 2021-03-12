@@ -1,2 +1,2 @@
 # cs4640project
-Pain
+Pages that have been implemented: Home, My Notes, Add Note, Contact
