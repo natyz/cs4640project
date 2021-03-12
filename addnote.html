@@ -12,7 +12,7 @@
     <link href="header.html" rel="import" />
 </head>
 <header>  
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
       <a class="navbar-brand" href="home.html">PeronsalNotes</a>
     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -50,7 +50,7 @@
     <section id="bignote">
       <h2>From: User <br/></h2><br/>
       <h3>Friend: <br/></h3>
-      <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+      <select class="form-select form-select-sm">
         <option selecte>Tom</option>
         <option value="1">Bob</option>
         <option value="2">Jen</option>
@@ -60,7 +60,7 @@
       <h3>Date: </h3><p id="date"></p>
       <br/><br/>
       <h3>Description </h3> <br/>
-      <textarea id="note" rows="10" cols="50" class="form-control"></textarea>
+      <textarea id="note" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
       <div class="row-fluid">
         <div class="span4 text-left">
           <button class="notebtn" onclick="boldText()"><b>B</b></button>
