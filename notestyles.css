@@ -1,0 +1,9 @@
+#bignote {
+    background-color:lightblue;
+  margin:0 -8px; padding:0 8px;
+  }
+
+h3, p { display: inline; }
+#notebtn {
+    background-color: #e7e7e7; 
+    color: black;} /* Gray */
