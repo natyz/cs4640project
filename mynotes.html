@@ -57,7 +57,7 @@
 
 <body>
   <!--https://jsfiddle.net/webtiki/MpXYr/3/-->
-  <div class="board">
+  <div class="board" id="cards">
     <h1 style="margin-bottom: 5vh;">My Notes</h1>
     <div class="notes">
 
@@ -108,16 +108,16 @@
 
     </div>
     <div class="button">
-      <input class="btn btn-success" id="addnote" type="button" onclick="location.href='addnote.html';"
-        value="Add note" />
+      <input class="btn btn-success" id="addnote" type="button" value="Add note" />
     </div>
   </div>
 </body>
 
 <script>
-  // THIS DOESNT WORK NAT HELP
-  document.getElementById("card").addEventListener("click", document.getElementById("cardtext").innerHTML =
-    "Hi Andy! I just wanted to know how you are doing! How have you been?");
+  // Click "add note" button redirects to a different page
+  document.getElementById("addnote").addEventListener("click",  function() {
+    document.location.href = "addnote.html";
+  });
 </script>
 
 </html>
