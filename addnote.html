@@ -57,7 +57,7 @@
   <div class="note">
     <h1>New Note...</h1>
     <section id="bignote">
-      <h2>From: User <br /></h2><br />
+      <h3>From: User <br /></h3><br />
       <h3>Friend: <br /></h3>
       <select class="form-select form-select-sm">
         <option selecte>Tom</option>
@@ -98,8 +98,14 @@
     document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
   })();
   // ARROW FUNCTION
-  deleteNote = () => alert("Deleted");
-  saveNote = () => alert("Saved");
+  let deleteNote = function () {
+    alert("Deleted");
+    location.href("mynotes.html");
+  }
+  let saveNote = function () {
+    alert("Saved");
+    location.href("mynotes.html");
+  }
 </script>
 
 </html>
