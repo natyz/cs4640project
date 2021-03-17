@@ -1,0 +1,19 @@
+.body {
+    display: flex;
+    flex-direction: row;
+    margin: 3vw;
+    height: 60vh;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    flex: 100;
+    margin: 3vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    width: 30vw;
+}
