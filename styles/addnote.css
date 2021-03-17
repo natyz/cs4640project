@@ -8,12 +8,13 @@
     background-color:lightblue;
   margin:0 -8px; padding:0 8px;
   }
-
+/*Spacing + text buttons*/
 h3, p { display: inline; }
 #notebtn {
     background-color: #e7e7e7; 
     color: black;
-} /* Gray */ 
+} 
+
 .notebtn:focus {
   background-color: #eef091;
 }

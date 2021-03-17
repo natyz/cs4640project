@@ -56,6 +56,7 @@
 <!-- <link rel="stylesheet" href="notestyles.css"> -->
 
 <body>
+  <!--SET UP SMALL CARDS THAT PREVIEW NOTES-->
   <!--https://jsfiddle.net/webtiki/MpXYr/3/-->
   <div class="board" id="cards">
     <h1 style="margin-bottom: 5vh;">My Notes</h1>
@@ -107,12 +108,13 @@
       </div> -->
 
     </div>
+    <!--ADD NOTE BUTTON -->
     <div class="button">
       <input class="btn btn-success" id="addnote" type="button" value="Add note" />
     </div>
   </div>
 </body>
-
+<!--EVENT LISTENER -->
 <script>
   // Click "add note" button redirects to a different page
   document.getElementById("addnote").addEventListener("click",  function() {

@@ -44,7 +44,7 @@
     justify-content: center;
 }
 }
-
+/*Set up the small card boxes that preview each note*/
 .card {
     width: 15rem;
     margin: 5px;
@@ -67,7 +67,7 @@
     background-color: #cfc;
     background-position:center center;
     background-repeat:no-repeat;
-    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+    background-size:cover; /* change "contain" if dont want cropped images  */
   }
   
   .square:hover{

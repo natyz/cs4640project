@@ -1,3 +1,4 @@
+// FUNCTIONS FOR FORMATING TEXT IN NOTE
 function boldText(){
     var target = document.getElementById("note");
     if( target.style.fontWeight == "bolder" ) {

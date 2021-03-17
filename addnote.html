@@ -17,9 +17,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+    <!--HEADER -->
   <link href="header.html" rel="import" />
 </head>
 <header>
+  <!--NAVIGATION BAR -->
   <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
     <a class="navbar-brand" href="home.html">PeronsalNotes</a>
 
@@ -54,6 +56,7 @@
 </header>
 
 <body>
+  <!--NOTE WHERE USER CAN CREATE PERSONALIZED NOTE-->
   <div class="note">
     <h1>New Note...</h1>
     <section id="bignote">
@@ -71,6 +74,7 @@
       <br /><br />
       <h3>Description </h3> <br />
       <textarea id="note" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
+      <!--ROW OF BUTTONS THAT FORMAT TEXT IN TEXTAREA -->
       <div class="row-fluid">
         <div class="span4 text-left">
           <button class="notebtn" onclick="boldText()"><b>B</b></button>
@@ -89,7 +93,7 @@
 </body>
 <script src="note.js"></script>
 <script>
-  // ANONYMOUS FUNCTION
+  // ANONYMOUS FUNCTIONS
   (function () {
     n = new Date();
     y = n.getFullYear();
