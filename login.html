@@ -53,45 +53,66 @@
     </nav>
 </header>
 
-<body>
-    <div class="body">
-        <div class="login">
-            <form>
-                <div class="form-group">
-                    <h1>Log In Here!</h1>
-                </div>
-                <div class="form-group">
-                    <label for="email">Username (email)</label>
-                    <input type="email" id="email" class="form-control" placeholder="Email Address">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="email" class="form-control" placeholder="Password" minlength="5"
-                        required>
-                </div>
-                <button type="submit" class="btn btn-success" onclick="location.href='mynotes.html';">Sign In</button>
-            </form>
+<body onload="setFocus()">
+    <div class="whole">
+        <div class="body">
+            <div class="login" style="background-color: #cfc; height: 60vh;">
+                <form>
+                    <div class="form-group">
+                        <h1>Log In Here!</h1>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Username (email)</label>
+                        <input type="email" id="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="email" class="form-control" placeholder="Password" minlength="5"
+                            required>
+                    </div>
+                    <button type="submit" class="btn btn-success" onclick="validate()">Sign In</button>
+                </form>
+            </div>
+            <div class="line"></div>
+            <div class="login">
+                <form>
+                    <div class="form-group">
+                        <h1>New? Sign Up Here!</h1>
+                    </div>
+                    <div class="form-group">
+                        <label for="newemail">Sign up with your email</label>
+                        <input type="email" id="newemail" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="newpassword">Choose a password (5 character minimum)</label>
+                        <input type="password" id="newpassword" class="form-control" placeholder="Password"
+                            minlength="5" required>
+                    </div>
+                    <button type="submit" class="btn btn-success" onclick="validateNew()">Create Account</button>
+                </form>
+            </div>
         </div>
-        <div style="border-left: 2px solid grey; flex: 1;"></div>
-        <div class="login">
-            <form>
-                <div class="form-group">
-                    <h1>New? Sign Up Here!</h1>
-                </div>
-                <div class="form-group">
-                    <label for="email">Sign up with your email</label>
-                    <input type="email" id="email" class="form-control" placeholder="Email Address">
-                </div>
-                <div class="form-group">
-                    <label for="password">Choose a password (5 character minimum)</label>
-                    <input type="password" id="password" class="form-control" placeholder="Password" minlength="5"
-                        required>
-                </div>
-                <button type="submit" class="btn btn-success" onclick="location.href='mynotes.html';">Create
-                    Account</button>
-            </form>
+        <div class="dummydata">
+            <p>Use this dummy data to log in or create a new account:</p>
+            <p>Username: email@email.com</p>
+            <p>Password: password</p>
         </div>
     </div>
 </body>
+
+<script>
+    let setFocus = () => document.getElementById("email").focus();
+
+    // ARROW FUNCTION
+    let validate = () => document.getElementById("email").value == "email@email.com" &&
+        document.getElementById("password").value == "password" ? location.href("mynotes.html")
+        : alert("The username or password is incorrect.");
+
+    let validateNew = () => document.getElementById("newemail").value != "" &&
+        document.getElementById("newpassword").value != "" ? location.href("mynotes.html") :
+        alert("Please choose a username and password");
+
+
+</script>
 
 </html>

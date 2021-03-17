@@ -9,6 +9,23 @@
     flex-direction: row;
 }
 
+@media only screen and (max-width: 600px) {
+    .notes {
+        position: relative;
+        height: 60vh;
+    }
+
+    .btn {
+        align-items: center;
+        justify-content: center;
+        width: 40vw;
+        height: 6vh;
+        padding-bottom: 5vh;
+        margin-top: 3vh;
+    }
+}
+
+@media only screen and (min-width: 600px) {
 .btn {
     position: absolute;
     bottom: 5vh;
@@ -17,9 +34,14 @@
     align-items: center;
     justify-content: center;
 }
+}
 
 .card {
-    max-width: 20rem;
+    width: 15rem;
+}
+
+.card-img-top {
+    height: 30vh;
 }
 
 .square {

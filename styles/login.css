@@ -1,6 +1,5 @@
 .body {
     display: flex;
-    flex-direction: row;
     margin: 3vw;
     height: 60vh;
 }
@@ -12,8 +11,56 @@
     margin: 3vw;
     justify-content: center;
     align-items: center;
+    background-color: #cfc; 
+    
 }
 
 .form-group {
     width: 30vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .whole {
+        display: flex;
+        flex-direction: column;
+    }
+    .body {
+        flex-direction: column;
+        height: 150vh;
+    }
+
+    .login {
+        position: relative;
+        top: 8vh;
+        height: 100vh;
+        padding: 10vh;
+    }
+
+    .dummydata {
+        position: relative;
+        bottom: -25vh;
+        padding-bottom: 5vh;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .body {
+        flex-direction: row;
+    }
+
+    .login {
+        height: 60vh;
+    }
+
+    .dummydata {
+        position: relative; 
+        top: 1vh; 
+        margin-left: 6vw; 
+        padding-top: 5vh; 
+        line-height: 60%;
+    }
+
+    .line {
+        border-left: 2px solid grey; flex: 1; height: 75vh;
+    }
 }

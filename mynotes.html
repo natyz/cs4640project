@@ -70,33 +70,32 @@
         </div>
       </div>
 
-      <div class="square">
-        <div class="content">
-          <div class="table">
-            <div class="table-cell">
-              Hi Andy! I just wanted to know how...
-            </div>
-          </div>
+      <div class="card bg-success mb-3">
+        <img class="card-img-top" src="https://i.imgur.com/0xxsg1R.gif?noredirect" alt="Note Image">
+        <div class="card-body">
+          <h5 class="card-title">Checking in</h5>
+          <p class="card-text">Hi Andy! I just wanted to know how...</p>
         </div>
       </div>
-      <div class="square">
-        <div class="content">
-          <div class="table">
-            <div class="table-cell numbers">
-              Hi Andy! I just wanted to know how...
-            </div>
-          </div>
+
+      <div class="card bg-success mb-3">
+        <img class="card-img-top" src="https://i.pinimg.com/originals/9d/29/3a/9d293a6baece811a07a1c2f41d592065.gif"
+          alt="Note Image">
+        <div class="card-body">
+          <h5 class="card-title">Checking in</h5>
+          <p class="card-text">Hi Andy! I just wanted to know how...</p>
         </div>
       </div>
-      <div class="square">
-        <div class="content">
-          <div class="table">
-            <div class="table-cell numbers">
-              Hi Andy! I just wanted to know how...
-            </div>
-          </div>
+
+      <div class="card bg-success mb-3">
+        <img class="card-img-top" src="https://i.pinimg.com/originals/63/3e/8a/633e8a837a39bea065eb23613ce40b06.gif"
+          alt="Note Image">
+        <div class="card-body">
+          <h5 class="card-title">Checking in</h5>
+          <p class="card-text">Hi Andy! I just wanted to know how...</p>
         </div>
       </div>
+
       <div class="square">
         <div class="content">
           <div class="table">
@@ -116,8 +115,17 @@
         </div>
       </div>
     </div>
-    <input class="btn btn-success" type="button" onclick="location.href='addnote.html';" value="Add note" />
+    <div class="button">
+      <input class="btn btn-success" id="addnote" type="button" onclick="location.href='addnote.html';"
+        value="Add note" />
+    </div>
   </div>
 </body>
+
+<script>
+  // THIS DOESNT WORK NAT HELP
+  document.getElementById("card").addEventListener("click", document.getElementById("cardtext").innerHTML =
+    "Hi Andy! I just wanted to know how you are doing! How have you been?");
+</script>
 
 </html>
