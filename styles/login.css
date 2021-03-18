@@ -4,6 +4,7 @@
     height: 60vh;
 }
 
+/* CENTERS THE ENTIRE LOGIN SCREEN */
 .login {
     display: flex;
     flex-direction: column;
@@ -19,6 +20,7 @@
     width: 30vw;
 }
 
+/* RESPONSIVE DESIGN FOR SMALL SCREENS */
 @media only screen and (max-width: 600px) {
     .whole {
         display: flex;
@@ -43,6 +45,7 @@
     }
 }
 
+/* RESPONSIVE DESIGN FOR LARGE SCREENS */
 @media only screen and (min-width: 600px) {
     .body {
         flex-direction: row;
@@ -60,6 +63,7 @@
         line-height: 60%;
     }
 
+    /* CREATES A SEPARATING LINE BETWEEN LOGIN AND CREATE ACCOUNT */
     .line {
         border-left: 2px solid grey; flex: 1; height: 75vh;
     }

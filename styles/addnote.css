@@ -1,15 +1,17 @@
 .note {
   display: flex;
   flex-direction: column;
-  margin: 3vw;
+  margin: 3vw 5vw;
 }
 
 #bignote {
-    background-color:lightblue;
-  margin:0 -8px; padding:0 8px;
-  }
+  background-color: lightblue;
+  padding: 2vw;
+}
+
 /*Spacing + text buttons*/
 h3, p { display: inline; }
+
 #notebtn {
     background-color: #e7e7e7; 
     color: black;

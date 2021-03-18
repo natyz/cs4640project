@@ -3,16 +3,19 @@
     flex-direction: column;
   }
   
+  /* JUMBOTRON BACKGROUND COLOR */
 .jumbotron {
     background-color: #cfc!important;
   }
   
+  /* STANDARDIZES IMAGES ON THE HOME SCREEN */
   .img {
     width: 20vw;
     height: 20vw;
     object-fit: cover;
   }
   
+  /* STYLES THE FOOTER */
   .footer {
     display: flex;
     flex-direction: column;
@@ -23,6 +26,8 @@
     justify-content: center;
   }
   
+  /* MAKES SURE THE LOGIN BUTTON AND FOOTER LOOK GOOD IN A RESPONSIVE DESIGN CONTEXT */
+  /* FOR SMALL SCREENS */
   @media only screen and (max-width: 600px) {
     .login {
       display: flex;
@@ -43,6 +48,7 @@
     }
   }
   
+  /* FOR LARGE SCREENS */
   @media only screen and (min-width: 600px) {
     .login {
       position: absolute; 
@@ -60,6 +66,7 @@
     }
   }
   
+  /* FOR THE COPYRIGHT */
   .footer-bottom {
     align-items: center;
     justify-content: center;

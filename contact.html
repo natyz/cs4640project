@@ -16,10 +16,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <!--HEADER -->
-  <link href="header.html" rel="import" />
+  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="./styles/contact.css">
 </head>
+<!-- NAVIGATION BAR -->
 <header>
   <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
     <a class="navbar-brand" href="home.html">PeronsalNotes</a>
@@ -61,25 +61,26 @@
   }
 </script>
 
-<body onload="setFocus()"">
+<body onload="setFocus()">
   <div class=" body">
-  <h1>Contact Us</h1>
-  <form name=" contact">
-    <div class="form-group" name="name">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Name">
-    </div>
-    <div class="form-group">
-      <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="comment">Comment</label>
-      <textarea rows="4" cols="50" class="form-control" id="comment" placeholder="Comment"></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+    <h1>Contact Us</h1>
+    <form name=" contact">
+      <div class="form-group" name="name">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name">
+      </div>
+      <!-- ENSURES EMAIL IS VALID -->
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea rows="4" cols="80" class="form-control" id="comment" placeholder="Comment"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
   </div>
 </body>
 

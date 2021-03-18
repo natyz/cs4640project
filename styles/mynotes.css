@@ -4,12 +4,14 @@
     margin: 3vw;
 }
 
+/* ALLOWS FOR AN OVERFLOW OF NOTES TO SCROLL */
 .notes {
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
 }
 
+/* RESPONSIVE DESIGN FOR SMALL SCREENS */
 @media only screen and (max-width: 600px) {
 
     .header {
@@ -34,20 +36,16 @@
     }
 }
 
+/* RESPONSIVE DESIGN FOR LARGE SCREENS */
 @media only screen and (min-width: 600px) {
-.btn {
-    position: absolute;
-    bottom: 5vh;
-    left: 30vw;
-    width: 40vw;
-    align-items: center;
-    justify-content: center;
-}
-}
-/*Set up the small card boxes that preview each note*/
-.card {
-    width: 15rem;
-    margin: 5px;
+    .btn {
+        position: absolute;
+        bottom: 5vh;
+        left: 30vw;
+        width: 40vw;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .card-img-top {
@@ -57,37 +55,3 @@
 .card:hover {
     box-shadow: 10px 10px 5px grey;
 }
-
-.square {
-    float:left;
-    position: relative;
-    width: 10%;
-    padding-bottom :10%; /* = width for a 1:1 aspect ratio */
-    margin:1.66%;
-    background-color: #cfc;
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:cover; /* change "contain" if dont want cropped images  */
-  }
-  
-  .square:hover{
-    background-color: #fffab1;
-  }
-  
-  .content {
-    position:absolute;
-    height:90%; /* = 100% - 2*5% padding */
-    width:90%; /* = 100% - 2*5% padding */
-    padding: 5%;
-  }
-
-  .table{
-    display:table;
-    width:100%;
-    height:100%;
-  }
-
-  .table-cell{
-    display:table-cell;
-    vertical-align:middle;
-  }

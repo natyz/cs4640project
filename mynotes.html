@@ -16,9 +16,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="./styles/mynotes.css">
-  <link href="header.html" rel="import" />
 </head>
+<!-- NAVIGATION BAR -->
 <header class="header">
   <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
     <a class="navbar-brand" href="home.html">PeronsalNotes</a>
@@ -53,15 +54,11 @@
   </nav>
 </header>
 
-<!-- <link rel="stylesheet" href="notestyles.css"> -->
-
 <body>
-  <!--SET UP SMALL CARDS THAT PREVIEW NOTES-->
-  <!--https://jsfiddle.net/webtiki/MpXYr/3/-->
   <div class="board" id="cards">
     <h1 style="margin-bottom: 5vh;">My Notes</h1>
+    <!-- CARDS THAT DISPLAY A NOTE PREVIEW AND THE IMAGE -->
     <div class="notes">
-
       <div class="card bg-success mb-3">
         <img class="card-img-top" src="https://64.media.tumblr.com/tumblr_md923niK1p1qc4uvwo1_400.gifv"
           alt="Note Image">
@@ -97,16 +94,6 @@
         </div>
       </div>
 
-      <!-- <div class="square">
-        <div class="content">
-          <div class="table">
-            <div class="table-cell numbers">
-              Hi Andy! I just wanted to know how...
-            </div>
-          </div>
-        </div>
-      </div> -->
-
     </div>
     <!--ADD NOTE BUTTON -->
     <div class="button">
@@ -117,7 +104,7 @@
 <!--EVENT LISTENER -->
 <script>
   // Click "add note" button redirects to a different page
-  document.getElementById("addnote").addEventListener("click",  function() {
+  document.getElementById("addnote").addEventListener("click", function () {
     document.location.href = "addnote.html";
   });
 </script>
