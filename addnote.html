@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles/addnote.css">
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -17,8 +17,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <!--HEADER -->
-  <link href="header.html" rel="import" />
+  <!-- EXTERNAL CSS -->
+  <link rel="stylesheet" href="./styles/addnote.css">
 </head>
 <header>
   <!--NAVIGATION BAR -->
@@ -60,7 +60,9 @@
   <div class="note">
     <h1>New Note...</h1>
     <section id="bignote">
+      <!-- WILL LATER BE REPLACED WITH THE USER'S NAME -->
       <h3>From: User <br /></h3><br />
+      <!-- CHOOSE WHO TO SEND IT TO AMONG YOUR FRIENDS LIST -->
       <h3>Friend: <br /></h3>
       <select class="form-select form-select-sm">
         <option selecte>Tom</option>
@@ -69,9 +71,11 @@
         <option value="3">WaN</option>
       </select>
       <br /><br />
+      <!-- WILL AUTOMATICALLY ADD THE DATE WITH THE ANONYMOUS FUNCTION -->
       <h3>Date: </h3>
-      <p id="date"></p>
+      <h4 id="date"></h4>
       <br /><br />
+      <!-- ALLOWS THE USER TO WRITE THE NOTE -->
       <h3>Description </h3> <br />
       <textarea id="note" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
       <!--ROW OF BUTTONS THAT FORMAT TEXT IN TEXTAREA -->
@@ -81,6 +85,7 @@
           <button class="notebtn" onclick="italicText()"><i>I</i></button>
           <button class="notebtn" onclick="underlineText()"><u>U</u></button>
         </div>
+        <!-- ALLOWS THE USER TO SAVE OR DELETE THE NOTE -->
         <div class="span4 text-right">
           <button onclick="saveNote()">SAVE</button>
           <button onclick="deleteNote()">DELETE</button>
@@ -91,9 +96,11 @@
     </section>
   </div>
 </body>
+<!-- INCLUDE THE JAVASCRIPT FOR FORMATING THE TEXT IN THE TEXTAREA -->
 <script src="note.js"></script>
 <script>
   // ANONYMOUS FUNCTIONS
+  // AUTOMATICALLY GETS THE CURRENT DATE
   (function () {
     n = new Date();
     y = n.getFullYear();
@@ -102,10 +109,13 @@
     document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
   })();
 
+  // ALERTS THE USER THAT THE NOTE HAS BEEN DELETED AND REDIRECTS
   let deleteNote = function () {
     alert("Deleted");
     location.href("mynotes.html");
   }
+
+  // ALERTS THE USER THAT THE NOTE HAS BEEN SAVED AND REDIRECTS
   let saveNote = function () {
     alert("Saved");
     location.href("mynotes.html");

@@ -16,9 +16,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="./styles/login.css">
-    <link href="header.html" rel="import" />
 </head>
+<!-- NAVIGATION BAR -->
 <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
         <a class="navbar-brand" href="home.html">PeronsalNotes</a>
@@ -52,6 +53,7 @@
 
     </nav>
 </header>
+<!-- SET FOCUS ON THE USERNAME TEXTAREA WHEN USER LOADS THE PAGE -->
 
 <body onload="setFocus()">
     <div class="whole">
@@ -61,15 +63,18 @@
                     <div class="form-group">
                         <h1>Log In Here!</h1>
                     </div>
+                    <!-- MUST BE A VALID USERNAME -->
                     <div class="form-group">
                         <label for="email">Username (email)</label>
                         <input type="email" id="email" class="form-control" placeholder="Email Address">
                     </div>
+                    <!-- ENSURES THE PASSWORD IS AT LEAST 5 CHARACTERS LONG -->
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" id="email" class="form-control" placeholder="Password" minlength="5"
                             required>
                     </div>
+                    <!-- VALIDATES THE USER INPUT BEFORE MOVING TO THE NEXT PAGE -->
                     <button type="submit" class="btn btn-success" onclick="validate()">Sign In</button>
                 </form>
             </div>
@@ -79,19 +84,23 @@
                     <div class="form-group">
                         <h1>New? Sign Up Here!</h1>
                     </div>
+                    <!-- MUST BE A VALID EMAIL -->
                     <div class="form-group">
                         <label for="newemail">Sign up with your email</label>
                         <input type="email" id="newemail" class="form-control" placeholder="Email Address">
                     </div>
+                    <!-- PASSWORD MUST BE AT LEAST 5 CHARACTERS LONG -->
                     <div class="form-group">
                         <label for="newpassword">Choose a password (5 character minimum)</label>
                         <input type="password" id="newpassword" class="form-control" placeholder="Password"
                             minlength="5" required>
                     </div>
+                    <!-- VALIDATE THAT THE NEW USERNAME AND PASSWORD IS VALID -->
                     <button type="submit" class="btn btn-success" onclick="validateNew()">Create Account</button>
                 </form>
             </div>
         </div>
+        <!-- DUMMY DATA FOR THIS DEMO TO LOG IN WITHOUT DATABASE -->
         <div class="dummydata">
             <p>Use this dummy data to log in or create a new account:</p>
             <p>Username: email@email.com</p>
@@ -101,13 +110,17 @@
 </body>
 
 <script>
+    // ARROW FUNCTIONS
+    // SET FOCUS ON THE EMAIL TEXTBOX
     let setFocus = () => document.getElementById("email").focus();
 
-    // ARROW FUNCTION
+    // ARROW FUNCTIONS
+    // VALIDATE THAT THE SIGN IN MATCHES THE DUMMY DATA
     let validate = () => document.getElementById("email").value == "email@email.com" &&
         document.getElementById("password").value == "password" ? location.href("mynotes.html")
         : alert("The username or password is incorrect.");
 
+    // VALIDATE THAT THE USER CANNOT CREATE AN ACCOUNT WITHOUT A USERNAME AND PASSWORD
     let validateNew = () => document.getElementById("newemail").value != "" &&
         document.getElementById("newpassword").value != "" ? location.href("mynotes.html") :
         alert("Please choose a username and password");
