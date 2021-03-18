@@ -53,13 +53,6 @@
 
   </nav>
 </header>
-<!--JS FILE CONTACT.JS-->
-<script src="contact.js" type="text/javascript"></script>
-<script type="text/javascript">
-  function setFocus() {
-    document.contact.name.focus();
-  }
-</script>
 
 <body onload="setFocus()">
   <div class=" body">
@@ -83,5 +76,9 @@
     </form>
   </div>
 </body>
+
+<script>
+  let setFocus = () => document.getElementById("name").focus();
+</script>
 
 </html>
