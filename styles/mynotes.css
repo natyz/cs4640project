@@ -46,6 +46,10 @@
         align-items: center;
         justify-content: center;
     }
+
+    .card {
+        width: 20vw;
+    }
 }
 
 .card-img-top {
