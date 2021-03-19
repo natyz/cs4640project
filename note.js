@@ -1,25 +1,27 @@
+// AUTHORS: NATALIE & WAN
+
 // FUNCTIONS FOR FORMATING TEXT IN NOTE
-function boldText(){
+function boldText() {
     var target = document.getElementById("note");
-    if( target.style.fontWeight == "bolder" ) {
+    if (target.style.fontWeight == "bolder") {
         target.style.fontWeight = "normal";
     } else {
         target.style.fontWeight = "bolder";
     }
 }
 
-function italicText(){
+function italicText() {
     var target = document.getElementById("note");
-    if( target.style.fontStyle == "italic" ) {
+    if (target.style.fontStyle == "italic") {
         target.style.fontStyle = "normal";
     } else {
         target.style.fontStyle = "italic";
     }
 }
 
-function underlineText(){
+function underlineText() {
     var target = document.getElementById("note");
-    if( target.style.textDecoration == "underline" ) {
+    if (target.style.textDecoration == "underline") {
         target.style.textDecoration = "none";
     } else {
         target.style.textDecoration = "underline";
