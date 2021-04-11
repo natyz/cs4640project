@@ -24,26 +24,26 @@
         </button>
 
         <div class="justify-content-end" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="mynotes.html">My Notes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Mailbox</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Friends</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Motivation Board</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-            </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="inbox.php">Inbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sentmail.php">Sent</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Friends</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Motivation Board</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
         </div>
 
     </nav>
@@ -108,9 +108,14 @@
             $hash = '$2y$10$C9a65t5WrlZy2pGRPoA2VeCQDxX2xHkTKYS9I8vLh8x0yFM/GDpui';     // hash for 'password'
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // AUTHENTICATE FIRST
                 $pwd = htmlspecialchars($_POST['pwd']);
 
                 if (password_verify($pwd, $hash)) {
+                    //SET COOKIES
+                    setcookie('user', $_POST['username']);//save username to cookie
+                    header ('Location: surve-instruction.php');
+
                     // successfully login, redirect a user to the main page
                     header("Location: " . $mainpage . "?name=" . $_POST['name']);
 
@@ -131,7 +136,9 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
+<div>
+    This page doesnt work right now.
+</div>
 </body>
 
 </html>

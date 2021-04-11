@@ -15,6 +15,11 @@
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="./styles/login.css">
 </head>
+<!-- START SESSION -->
+<?php session_start();    // make sessions available
+// Session data are accessible from an implicit $_SESSION global array variable
+// after a call is made to the session_start() function.
+?>
 <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
         <a class="navbar-brand" href="home.html">PeronsalNotes</a>
@@ -26,10 +31,10 @@
         <div class="justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="mynotes.html">My Notes</a>
+                    <a class="nav-link" href="inbox.php">Inbox</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mailbox</a>
+                    <a class="nav-link" href="sentmail.php">Sent</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Friends</a>
@@ -50,7 +55,6 @@
 </header>
 
 <body>
-
     <?php
     $number_attempt = 0; // null;  
     if (isset($_GET['attempt'])) {
@@ -66,28 +70,28 @@
         <div class="whole">
             <div class="body">
                 <div class="login" style="background-color: #cfc; height: 60vh;">
-                <div class="form-group">
+                    <div class="form-group">
                         <h1>Log In Here!</h1>
                     </div>
                     <form action="login.php" method="post">
 
-                        Username: <input type="text" name="name" required /> <br />
+                        Email: <input type="text" name="useremail" required /> <br />
                         Password: <input type="password" name="loginpwd" required /> <br />
                         <input type="hidden" value="<?php if (isset($_GET['attempt'])) echo $_GET['attempt']  // $number_attempt
                                                     ?>" name="attempt" />
-                        <input type="submit" value="Submit"  class="btn btn-success" <?php if ($number_attempt >= 3) { ?> disabled <?php } ?> />
+                        <input type="submit" value="Submit" class="btn btn-success" <?php if ($number_attempt >= 3) { ?> disabled <?php } ?> />
                     </form>
                     <span class="msg"><?php if (isset($_GET['msg'])) echo $_GET['msg'] ?></span>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
                 </div>
             </div>
         </div>
 
         <?php
-            // $pwd = password_hash('password', PASSWORD_BCRYPT); // strongest password hash; we want to encrypt
-            // echo $pwd;
+        // $pwd = password_hash('password', PASSWORD_BCRYPT); // strongest password hash; we want to encrypt
+        // echo $pwd;
         function authenticate()
         {
             global $mainpage;
@@ -96,14 +100,25 @@
             $hash = '$2y$10$idWH5jRDJZCvl2McWT3kduRcv8Cs4nPKe7JIGQF.0gLKsb2i5549e';     // hash for 'password'
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // AUTHENTICATE FIRST
+                $user = trim($_POST['useremail']);
                 $pwd = htmlspecialchars($_POST['loginpwd']);
 
                 if (password_verify($pwd, $hash)) {
-                    // successfully login, redirect a user to the main page
-                    header("Location: " . $mainpage . "?name=" . $_POST['name']);
+                    //SET COOKIES
+                    setcookie('user', $_POST['useremail']); //save username to cookie
 
-                    // Alternatively, we can hardcoard the redirected URL here
-                    // header("Location: http://localhost/cs4640/state-maintenance/inclass/hidden-input-URL-rewriting/sticky-form.php?name=" . $_POST['name']);
+                    // successfully login, redirect a user to the main page
+                    header("Location: " . $mainpage);
+
+                    //SET UP SESSIONS
+                    $_SESSION['user'] = $user;
+
+                    $hash_pwd = md5($pwd);
+                    //          $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+                    //          $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
+
+                    $_SESSION['pwd'] = $hash_pwd;
                 } else {
                     //          echo "<span class='msg'>Username and password do not match our record</span> <br/>";
                     $number_attempt = intval($_POST['attempt']) + 1;
@@ -112,9 +127,14 @@
             }
         }
 
-        $mainpage = "mynotes.html";
+        $mainpage = "inbox.php";
         authenticate();
         ?>
+    </div>
+    <div>
+        Username: any email
+        <br />
+        password: password
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

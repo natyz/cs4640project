@@ -6,6 +6,7 @@
   <meta name="author" content="Wan & Natalie">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- required to handle IE -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -33,34 +34,34 @@
     </button>
 
     <div class="justify-content-end" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="mynotes.html">My Notes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mailbox</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Friends</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Motivation Board</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
-      </ul>
-    </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="inbox.php">Inbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sentmail.php">Sent</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Friends</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Motivation Board</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
 
   </nav>
 </header>
 
 <body>
   <div class="board" id="cards">
-    <h1 style="margin-bottom: 5vh;">My Notes</h1>
+  <h1 style="margin-bottom: 5vh;">Sent mail from <?php echo $_COOKIE['user'] ?></h1>
     <!-- CARDS THAT DISPLAY A NOTE PREVIEW AND THE IMAGE -->
     <div class="notes">
       <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
