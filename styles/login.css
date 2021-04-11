@@ -1,4 +1,8 @@
 /* AUTHORS: NATALIE & WAN */
+.msg { margin-left:40px; font-style: italic; color: red; }  
+.input, .textarea { display:inline-block; font-family:arial; margin: 5px 10px 5px 40px; padding: 8px 12px 8px 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; width: 90%; font-size: small; } 
+.label { display: block; }
+
 
 .body {
     display: flex;
