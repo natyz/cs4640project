@@ -37,7 +37,7 @@
     //    header('Location: login.php');
 
     // redirect with 5 seconds delay
-    echo "Successful logout";
+    echo "Successful logout. You will be redirected to the login page in 5 seconds.";
     header('refresh:5; url=login.php');
   }
 

@@ -17,7 +17,7 @@ try{
     $mail->Username = "natandwan2@gmail.com";  // SMTP username
     $mail->Password = "natandwan4640";         // SMTP password 
     
-    //Recipients
+    //Recipient
     $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
     $mail->addAddress($_POST['email']);
 
@@ -27,12 +27,22 @@ try{
     $mail->Body = 'From=' . $_POST['name'] . ': email address=' . $_POST['email'] . ': comment=' . $_POST['comment'];
 
     $mail->send();
-    $confirm = "Thank you. Your comment has been sent.";
+
+    // Send to website's email
+    $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
+    $mail->addAddress('natandwan2@gmail.com');
+
+    $mail->isHTML(true);
+
+    $mail->Subject = 'Contact Us';
+    $mail->Body = 'From=' . $_POST['name'] . ': email address=' . $_POST['email'] . ': comment=' . $_POST['comment'];
+
+    $mail->send();
+    $confirm = "Thank you. Your comment has been sent. You will be redirected to the home page in 5 seconds.";
     echo '<div class ="center confirm">'.$confirm.'</div>';
+    header('refresh:5; url=home.php');
 } 
 catch (Exception $e) {
     $msg = "sorry it was not sent.";
 }
-
-
 ?>
