@@ -17,7 +17,7 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
-        <a class="navbar-brand" href="home.html">PeronsalNotes</a>
+        <a class="navbar-brand" href="home.php">PeronsalNotes</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>

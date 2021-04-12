@@ -35,12 +35,11 @@
 }
 
   </style>
-
 </head>
 <!-- NAVIGATION BAR -->
 <header class="header">
   <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
-    <a class="navbar-brand" href="home.html">PeronsalNotes</a>
+    <a class="navbar-brand" href="home.php">PeronsalNotes</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -66,17 +65,22 @@
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
-          <li class="nav-item">
-          <a class="nav-link topnav-right" href="logout.php"
-            style="right: 3vw; color: black; background-color: lightblue; 
-            border-radius: 10px; width: 12vw; text-align: center; border-color: black; border-width: 1px; border-style: solid;">Log Out!</a>
-        </li>
+          <li class="nav-item mr-auto">
+            <a class="nav-link" href="logout.php" style="right: 3vw; color: black; background-color: lightblue; 
+          border-radius: 10px; width: 12vw; text-align: center; border-color: black; border-width: 1px; border-style: solid;">Logout</a>
+          </li>
         </ul>
     </div>
 
   </nav>
 </header>
 
+<?php session_start(); // make sessions available ?>
+
+<?php
+if (isset($_SESSION['user']))
+{
+?>
 <body>
   <div class="board" id="cards">
     <h1 style="margin-bottom: 5vh;">Inbox for <?php echo $_COOKIE['user'] ?></h1>
@@ -120,6 +124,13 @@
     </div>
   </div>
 </body>
+<?php
+}
+else {
+  header('Location: login.php');
+  // Force login. If the user has not logged in, redirect to login page
+}
 
+?>
 
 </html>

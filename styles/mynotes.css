@@ -1,5 +1,14 @@
 /* AUTHORS: NATALIE & WAN */
-
+.login {
+    display: flex;
+    flex-direction: column;
+    flex: 100;
+    margin: 3vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #cfc; 
+    
+}
 .board {
     display: flex;
     flex-direction: column;
@@ -61,3 +70,49 @@
 .card:hover {
     box-shadow: 10px 10px 5px grey;
 }
+ /* MAKES SURE THE LOGIN BUTTON AND FOOTER LOOK GOOD IN A RESPONSIVE DESIGN CONTEXT */
+  /* FOR SMALL SCREENS */
+  @media only screen and (max-width: 600px) {
+    .login {
+      display: flex;
+      flex-direction: row;
+      width: 20vw;
+    }
+
+    .footer-body {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3vh;
+      margin-bottom: 3vh;
+    }
+  }
+  
+  /* FOR LARGE SCREENS */
+  @media only screen and (min-width: 600px) {
+    .login {
+      position: absolute; 
+      right: 3vw;
+    }
+    .footer-body {
+      display: flex;
+      flex-direction: row;
+    }
+  
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      margin: 5vh 12vw 5vh 12vw;
+    }
+  }
+  
+  /* FOR THE COPYRIGHT */
+  .footer-bottom {
+    align-items: center;
+    justify-content: center;
+  }
+

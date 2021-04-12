@@ -23,10 +23,11 @@
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="./styles/addnote.css">
 </head>
+<?php session_start(); // make sessions available ?>
 <header>
   <!--NAVIGATION BAR -->
   <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
-    <a class="navbar-brand" href="home.html">PeronsalNotes</a>
+    <a class="navbar-brand" href="home.php">PeronsalNotes</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -58,6 +59,11 @@
   </nav>
 </header>
 
+
+<?php
+if (isset($_SESSION['user']))
+{
+?>
 <body>
   <!--NOTE WHERE USER CAN CREATE PERSONALIZED NOTE-->
   <div class="note">
@@ -99,6 +105,14 @@
     </section>
   </div>
 </body>
+<?php
+}
+else {
+  header('Location: login.php');
+  // Force login. If the user has not logged in, redirect to login page
+}
+
+?>
 <!-- INCLUDE THE JAVASCRIPT FOR FORMATING THE TEXT IN THE TEXTAREA -->
 <script src="note.js"></script>
 <script>
