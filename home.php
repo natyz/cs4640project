@@ -21,57 +21,7 @@
 // Session data are accessible from an implicit $_SESSION global array variable
 // after a call is made to the session_start() function.
 ?>
-<header class="header">
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
-    <a class="navbar-brand" href="home.html">PeronsalNotes</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="justify-content-end" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="inbox.php">Inbox</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sentmail.php">Sent</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Friends</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Motivation Board</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
-        <!-- LOGIN VS LOGOUT-->
-        <?php
-        if (isset($_SESSION['user'])) {
-        ?>
-          <li class="nav-item">
-            <a class="nav-link login" href="logout.php" style="right: 3vw; color: black; background-color: lightblue; 
-            border-radius: 10px; width: 12vw; text-align: center; border-color: black; border-width: 1px; border-style: solid;">Logout</a>
-          </li>
-        <?php
-        } else {
-        ?>
-          <li class="nav-item">
-            <a class="nav-link login" href="login.php" style="right: 3vw; color: black; background-color: lightblue; 
-          border-radius: 10px; width: 12vw; text-align: center; border-color: black; border-width: 1px; border-style: solid;">Login</a>
-          </li>
-        <?php
-        }
-        ?>
-      </ul>
-    </div>
-
-  </nav>
-</header>
+<?php include "./navbar.php";?>
 
 </script>
 

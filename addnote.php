@@ -16,7 +16,7 @@
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="./styles/addnote.css">
 </head>
-<?php session_start(); // make sessions available 
+<?php session_start(); // make sessions available
 ?>
 <header>
   <!--NAVIGATION BAR -->
@@ -57,45 +57,44 @@
 <?php
 if (isset($_SESSION['user'])) {
 ?>
-
-  <body>
-    <!--NOTE WHERE USER CAN CREATE PERSONALIZED NOTE-->
-    <div class="note">
-      <h1>New Note...</h1>
-      <section id="bignote">
-        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-          <h3>From: <?php echo $_COOKIE['user'] ?> <br /></h3><br />
-          <h3>Friend's account email: <br /></h3>
-          <input type="text" id="receiver" name="receiver" />
-          <br /><br />
-          <!-- WILL AUTOMATICALLY ADD THE DATE WITH THE ANONYMOUS FUNCTION -->
-          <h3>Date: </h3>
-          <input type="text" id="date" name="date" />
-          <br /><br />
-          <h3>URL image for the note: </h3>
-          <input type="text" id="pic" name="pic" />
-          <br /><br />
-          <!-- ALLOWS THE USER TO WRITE THE NOTE -->
-          <h3>Description </h3> <br />
-          <textarea id="note" name="message" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
-          <!--ROW OF BUTTONS THAT FORMAT TEXT IN TEXTAREA -->
-          <div class="row-fluid">
-            <div class="span4 text-left">
-              <button class="notebtn" onclick="boldText()"><b>B</b></button>
-              <button class="notebtn" onclick="italicText()"><i>I</i></button>
-              <button class="notebtn" onclick="underlineText()"><u>U</u></button>
-            </div>
-            <!-- ALLOWS THE USER TO SAVE OR DELETE THE NOTE -->
-            <div class="span4 text-right">
-              <input type="submit" name="btnaction" value="SAVE" class="btn btn-light" />
-              <button onclick="deleteNote()">DELETE</button>
-            </div>
-          </div>
-        </form>
-        <br /><br />
-      </section>
-    </div>
-  </body>
+<body>
+  <!--NOTE WHERE USER CAN CREATE PERSONALIZED NOTE-->
+  <div class="note">
+    <h1>New Note...</h1>
+    <section id="bignote">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+      <h3>From: <?php echo $_COOKIE['user'] ?> <br /></h3><br />
+      <h3>Friend's account email: <br /></h3>
+      <input type="text" id="receiver" name="receiver">
+      <br /><br />
+      <!-- WILL AUTOMATICALLY ADD THE DATE WITH THE ANONYMOUS FUNCTION -->
+      <h3>Date: </h3>
+      <input type="text" id="date" name="date">
+      <br /><br />
+      <h3>URL image for the note: </h3>
+      <input type="text" id="pic" name="pic">
+      <br /><br />
+      <!-- ALLOWS THE USER TO WRITE THE NOTE -->
+      <h3>Description </h3> <br />
+      <textarea id="note" name="message" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
+      <!--ROW OF BUTTONS THAT FORMAT TEXT IN TEXTAREA -->
+      <div class="row-fluid">
+        <div class="span4 text-left">
+          <button class="notebtn" onclick="boldText()"><b>B</b></button>
+          <button class="notebtn" onclick="italicText()"><i>I</i></button>
+          <button class="notebtn" onclick="underlineText()"><u>U</u></button>
+        </div>
+        <!-- ALLOWS THE USER TO SAVE OR DELETE THE NOTE -->
+        <div class="span4 text-right">
+          <input type="submit" name="btnaction" value="SAVE">
+          <button onclick="deleteNote()">DELETE</button>
+        </div>
+      </div>
+      <br /><br />
+    </form>
+    </section>
+  </div>
+</body>
 <?php
 } else {
   header('Location: login.php');
@@ -149,6 +148,7 @@ if (isset($_GET['btnaction'])) {
   }
 }
 ?>
+
 <?php
 
 function insertData()
