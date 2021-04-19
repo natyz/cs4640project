@@ -1,3 +1,5 @@
+<!-- AUTHORS: WAN LI AND NATALIE ZHANG -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +34,7 @@ if (isset($_SESSION['user'])) {
       <div class="notes">
 
         <?php
-        require_once('./connect-db.php');
+        require('./connect-db.php');
         $con = new mysqli($hostname, $username, $password, $dbname);
         // Check connection
         if (mysqli_connect_errno()) {
@@ -51,11 +53,10 @@ if (isset($_SESSION['user'])) {
 
         while ($row = mysqli_fetch_array($exeQuery)) {
           echo  "<div class='card bg-success mb-3' style='width: 18vw; margin-right: 1vw;'>";
-          echo "<form action=" . $_SERVER['PHP_SELF'] . " method='GET'>";
+          echo "<form action='" . $_SERVER['PHP_SELF'] . "' method=\"GET\">";
           echo "<img class='card-img-top' name='pic' src='" . $row['pic'] . "' alt='Note Image' value='" . $row['pic'] . "'>";
           echo  "<div class='card-body'>";
-          echo "<h5 class='card-title' name='receiver' value='" . $row['receiver'] . "'>";
-          echo $row['receiver'] . "</h5>";
+          echo "<h5 class='card-title' name='receiver' value='" . $row['receiver'] . "'>" . $row['receiver'] . "</h5>";
           echo "<p class='card-text' name='message' value='" . $row['message'] . "'>" . $row['message'] . "</p>";
           echo "<p class='card-text' name='date' value='" . $row['date'] . "'>" . $row['date'] . "</p>";
           echo "<input type='submit' name='btnaction' value='delete'>";
@@ -100,6 +101,7 @@ function delete()
     $date = $_GET['date'];
     $message = $_GET['message'];
     $pic = $_GET['pic'];
+    echo $$_COOKIE['user'];
 
     $query = "DELETE FROM notes WHERE sender=:sender and receiver=:receiver and date=:dates and message=:messages and pic=:pic";  // prevents injection attacks
 

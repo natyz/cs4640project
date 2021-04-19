@@ -1,3 +1,5 @@
+<!-- AUTHORS: WAN LI AND NATALIE ZHANG -->
+
 <!DOCTYPE html>
 <html>
 
@@ -24,26 +26,26 @@
         </button>
 
         <div class="justify-content-end" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="inbox.php">Inbox</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sentmail.php">Sent</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Friends</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Motivation Board</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="inbox.php">Inbox</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sentmail.php">Sent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Motivation Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
         </div>
 
     </nav>
@@ -66,31 +68,30 @@
         <div class="whole">
             <div class="body">
                 <div class="login" style="background-color: #cfc; height: 60vh;">
-                <div class="form-group">
+                    <div class="form-group">
                         <h1>Sign Up Here!</h1>
                     </div>
                     <form action="login.php" method="post">
 
-                    <div class="form-group">
-                        <h1>New? Sign Up Here!</h1>
-                    </div>
-                    <!-- MUST BE A VALID EMAIL -->
-                    <div class="form-group">
-                        <label for="newemail">Sign up with your email</label>
-                        <input type="email" id="newemail" class="form-control" placeholder="Email Address">
-                    </div>
-                    <!-- PASSWORD MUST BE AT LEAST 5 CHARACTERS LONG -->
-                    <div class="form-group">
-                        <label for="newpassword">Choose a password (5 character minimum)</label>
-                        <input type="password" id="newpassword" class="form-control" placeholder="Password"
-                            minlength="5" required>
-                    </div>
-                    <!-- VALIDATE THAT THE NEW USERNAME AND PASSWORD IS VALID -->
-                    <button type="submit" class="btn btn-success" onclick="validateNew()">Create Account</button>
-                </form>
+                        <div class="form-group">
+                            <h1>New? Sign Up Here!</h1>
+                        </div>
+                        <!-- MUST BE A VALID EMAIL -->
+                        <div class="form-group">
+                            <label for="newemail">Sign up with your email</label>
+                            <input type="email" id="newemail" class="form-control" placeholder="Email Address">
+                        </div>
+                        <!-- PASSWORD MUST BE AT LEAST 5 CHARACTERS LONG -->
+                        <div class="form-group">
+                            <label for="newpassword">Choose a password (5 character minimum)</label>
+                            <input type="password" id="newpassword" class="form-control" placeholder="Password" minlength="5" required>
+                        </div>
+                        <!-- VALIDATE THAT THE NEW USERNAME AND PASSWORD IS VALID -->
+                        <button type="submit" class="btn btn-success" onclick="validateNew()">Create Account</button>
+                    </form>
                     <span class="msg"><?php if (isset($_GET['msg'])) echo $_GET['msg'] ?></span>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <p>Already have an account? <a href="login.php">Login up here</a></p>
                 </div>
             </div>
@@ -113,8 +114,8 @@
 
                 if (password_verify($pwd, $hash)) {
                     //SET COOKIES
-                    setcookie('user', $_POST['username']);//save username to cookie
-                    header ('Location: surve-instruction.php');
+                    setcookie('user', $_POST['username']); //save username to cookie
+                    header('Location: surve-instruction.php');
 
                     // successfully login, redirect a user to the main page
                     header("Location: " . $mainpage . "?name=" . $_POST['name']);
@@ -136,9 +137,9 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<div>
-    This page doesnt work right now.
-</div>
+    <div>
+        This page doesnt work right now.
+    </div>
 </body>
 
 </html>
