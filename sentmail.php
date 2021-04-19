@@ -79,7 +79,7 @@ if (isset($_SESSION['user'])) {
     }?>
 
       <?php
-    $sql="SELECT * FROM notes ORDER BY date";
+    $sql="SELECT * FROM notes WHERE sender='" . $_COOKIE['user'] . "' ORDER BY date";
     $result = mysqli_query($con,$sql);
     
     $exeQuery = mysqli_query($con,$sql);
