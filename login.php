@@ -68,31 +68,27 @@
     } else
         $number_attempt = 0;
 
-    if(isset($_POST['submit'])){
-            $user = $_POST['useremail'];
-            $passwordstr = $_POST['loginpwd'];
-            $query = "SELECT password FROM login WHERE username = '$user'";
-        
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $results = $statement->fetchAll();
-            
-            if (!empty($results)){
-                {
+    if (isset($_POST['submit'])) {
+        $user = $_POST['useremail'];
+        $passwordstr = $_POST['loginpwd'];
+        $query = "SELECT password FROM login WHERE username = '$user'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        if (!empty($results)) { {
                 //verify that the typed password matches the hashed password in the table
-                  if ( strcmp($passwordstr, $results[0]['password']) ) 
-                  {            
+                if (strcmp($passwordstr, $results[0]['password'])) {
                     $_SESSION['user'] = $user;
                     header("Location: inbox.php");
-                  } 
-                  else{
+                } else {
                     echo "<div class=\"text-center\">That's the wrong password. Please try again.</div>";
-                  }
                 }
             }
-            else{
-              echo "<div class=\"text-center\">That account doesn't exist.</div>";
-            }
+        } else {
+            echo "<div class=\"text-center\">That account doesn't exist.</div>";
+        }
     }
     ?>
     <div>
@@ -102,7 +98,7 @@
                     <div class="form-group">
                         <h1>Log In Here!</h1>
                     </div>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         Email: <input type="text" name="useremail" required /> <br />
                         Password: <input type="password" name="loginpwd" required /> <br />
                         <input type="hidden" value="<?php if (isset($_GET['attempt'])) echo $_GET['attempt']  // $number_attempt
