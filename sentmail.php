@@ -18,9 +18,9 @@
 
 </head>
 <!-- NAVIGATION BAR -->
-<?php include "./navbar.php";?>
 <?php session_start(); // make sessions available 
 ?>
+<?php include "./navbar.php"; ?>
 <?php
 if (isset($_SESSION['user'])) {
 ?>
@@ -31,40 +31,40 @@ if (isset($_SESSION['user'])) {
       <!-- CARDS THAT DISPLAY A NOTE PREVIEW AND THE IMAGE -->
       <div class="notes">
 
-      <?php
-    require_once('./connect-db.php');
-    $con = new mysqli($hostname, $username, $password, $dbname);
-    // Check connection
-    if (mysqli_connect_errno()) {
-    echo("Can't connect to MySQL Server. Error code: " .
-    mysqli_connect_error());
-    return null;
-    }?>
+        <?php
+        require_once('./connect-db.php');
+        $con = new mysqli($hostname, $username, $password, $dbname);
+        // Check connection
+        if (mysqli_connect_errno()) {
+          echo ("Can't connect to MySQL Server. Error code: " .
+            mysqli_connect_error());
+          return null;
+        } ?>
 
-      <?php
-    $sql="SELECT * FROM notes WHERE sender='" . $_COOKIE['user'] . "' ORDER BY date";
-    $result = mysqli_query($con,$sql);
-    
-    $exeQuery = mysqli_query($con,$sql);
+        <?php
+        $sql = "SELECT * FROM notes WHERE sender='" . $_COOKIE['user'] . "' ORDER BY date";
+        $result = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_array($exeQuery)) {
-        echo  "<div class='card bg-success mb-3' style='width: 18vw; margin-right: 1vw;'>";
-        echo "<img class='card-img-top' src='";
-        echo $row['pic'];
-        echo "' alt='Note Image'>";
-        echo  "<div class='card-body'>";
-        echo "<h5 class='card-title'>";
-        echo $row['sender'];
-        echo "</h5>";
-        echo "<p class='card-text'>";
-        echo $row['message'];
-        echo "</p> <p class='card-text'>";
-        echo $row['date'];
-        echo "</p></div></div>";
-    }    
-    
-    mysqli_close($con);
-    ?>
+        $exeQuery = mysqli_query($con, $sql);
+
+        while ($row = mysqli_fetch_array($exeQuery)) {
+          echo  "<div class='card bg-success mb-3' style='width: 18vw; margin-right: 1vw;'>";
+          echo "<img class='card-img-top' src='";
+          echo $row['pic'];
+          echo "' alt='Note Image'>";
+          echo  "<div class='card-body'>";
+          echo "<h5 class='card-title'>";
+          echo $row['sender'];
+          echo "</h5>";
+          echo "<p class='card-text'>";
+          echo $row['message'];
+          echo "</p> <p class='card-text'>";
+          echo $row['date'];
+          echo "</p></div></div>";
+        }
+
+        mysqli_close($con);
+        ?>
 
         <!-- <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
           <img class="card-img-top" src="https://64.media.tumblr.com/tumblr_md923niK1p1qc4uvwo1_400.gifv" alt="Note Image">

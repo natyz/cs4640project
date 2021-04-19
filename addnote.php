@@ -20,7 +20,6 @@
 ?>
 <?php include "./navbar.php"; ?>
 
-
 <?php
 if (isset($_SESSION['user'])) {
 ?>
