@@ -67,7 +67,43 @@ if (isset($_SESSION['user'])) {
       <h1 style="margin-bottom: 5vh;">Sent mail from <?php echo $_COOKIE['user'] ?></h1>
       <!-- CARDS THAT DISPLAY A NOTE PREVIEW AND THE IMAGE -->
       <div class="notes">
-        <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
+
+      <?php
+    require_once('./connect-db.php');
+    $con = new mysqli($hostname, $username, $password, $dbname);
+    // Check connection
+    if (mysqli_connect_errno()) {
+    echo("Can't connect to MySQL Server. Error code: " .
+    mysqli_connect_error());
+    return null;
+    }?>
+
+      <?php
+    $sql="SELECT * FROM notes ORDER BY date";
+    $result = mysqli_query($con,$sql);
+    
+    $exeQuery = mysqli_query($con,$sql);
+
+    while($row = mysqli_fetch_array($exeQuery)) {
+        echo  "<div class='card bg-success mb-3' style='width: 18vw; margin-right: 1vw;'>";
+        echo "<img class='card-img-top' src='";
+        echo $row['pic'];
+        echo "' alt='Note Image'>";
+        echo  "<div class='card-body'>";
+        echo "<h5 class='card-title'>";
+        echo $row['sender'];
+        echo "</h5>";
+        echo "<p class='card-text'>";
+        echo $row['message'];
+        echo "</p> <p class='card-text'>";
+        echo $row['date'];
+        echo "</p></div></div>";
+    }    
+    
+    mysqli_close($con);
+    ?>
+
+        <!-- <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
           <img class="card-img-top" src="https://64.media.tumblr.com/tumblr_md923niK1p1qc4uvwo1_400.gifv" alt="Note Image">
           <div class="card-body">
             <h5 class="card-title">Checking in</h5>
@@ -97,7 +133,7 @@ if (isset($_SESSION['user'])) {
             <h5 class="card-title">Checking in</h5>
             <p class="card-text">Hi Andy! I just wanted to know how...</p>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <!--ADD NOTE BUTTON -->

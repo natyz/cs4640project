@@ -69,24 +69,21 @@ if (isset($_SESSION['user']))
   <div class="note">
     <h1>New Note...</h1>
     <section id="bignote">
-      <!-- WILL LATER BE REPLACED WITH THE USER'S NAME -->
-      <h3>From: User <br /></h3><br />
-      <!-- CHOOSE WHO TO SEND IT TO AMONG YOUR FRIENDS LIST -->
-      <h3>Friend: <br /></h3>
-      <select class="form-select form-select-sm">
-        <option selecte>Tom</option>
-        <option value="1">Bob</option>
-        <option value="2">Jen</option>
-        <option value="3">WaN</option>
-      </select>
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+      <h3>From: <?php echo $_COOKIE['user'] ?> <br /></h3><br />
+      <h3>Friend's account email: <br /></h3>
+      <input type="text" id="receiver" name="receiver">
       <br /><br />
       <!-- WILL AUTOMATICALLY ADD THE DATE WITH THE ANONYMOUS FUNCTION -->
       <h3>Date: </h3>
-      <h4 id="date"></h4>
+      <h4 id="date" name="date"></h4>
+      <br /><br />
+      <h3>URL image for the note: </h3>
+      <input type="text" id="pic" name="pic">
       <br /><br />
       <!-- ALLOWS THE USER TO WRITE THE NOTE -->
       <h3>Description </h3> <br />
-      <textarea id="note" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
+      <textarea id="note" name="message" rows="10" cols="50" class="form-control" placeholder="Hi! How are you doing?"></textarea>
       <!--ROW OF BUTTONS THAT FORMAT TEXT IN TEXTAREA -->
       <div class="row-fluid">
         <div class="span4 text-left">
@@ -96,15 +93,16 @@ if (isset($_SESSION['user']))
         </div>
         <!-- ALLOWS THE USER TO SAVE OR DELETE THE NOTE -->
         <div class="span4 text-right">
-          <button onclick="saveNote()">SAVE</button>
+          <input type="submit" name="btnaction" value="SAVE"></button>
           <button onclick="deleteNote()">DELETE</button>
         </div>
       </div>
-
       <br /><br />
+    </form>  
     </section>
   </div>
 </body>
+
 <?php
 }
 else {
@@ -123,7 +121,7 @@ else {
     y = n.getFullYear();
     m = n.getMonth() + 1;
     d = n.getDate();
-    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+    document.getElementById("date").innerHTML = y + "-" + m + "-" + d;
   })();
 
   // ALERTS THE USER THAT THE NOTE HAS BEEN DELETED AND REDIRECTS
@@ -138,5 +136,60 @@ else {
     location.href("mynotes.html");
   }
 </script>
+
+<?php
+    require_once('./connect-db.php');
+    $con = new mysqli($hostname, $username, $password, $dbname);
+    // Check connection
+    if (mysqli_connect_errno()) {
+    echo("Can't connect to MySQL Server. Error code: " .
+    mysqli_connect_error());
+    return null;
+    }?>
+
+<?php
+if (isset($_GET['btnaction'])) {
+  echo "it works!";
+  try {
+    insertData();
+  } 
+  catch (Exception $e)       // handle any type of exception
+   {
+      $error_message = $e->getMessage();
+      echo "<p>Error message: $error_message </p>";
+   }   
+}
+?>
+<?php 
+function insertData()
+{
+  global $db;
+
+  if (isset($_GET['btnaction'])) {
+  $sender = $_COOKIE['user']; 
+  $receiver = $_POST['receiver']; 
+  $date = $_POST['date'];
+  $message = $_POST['message'];
+  $pic = $_POST['pic'];
+
+  $query = "INSERT INTO notes VALUES (:sender, :receiver, :dates, :messages, :pic)";  // prevents injection attacks
+  
+  $statement = $db->prepare($query);
+  $statement->bindValue(':sender', $sender);
+  $statement->bindValue(':receiver', $receiver);
+  $statement->bindValue(':dates', $date);
+  $statement->bindValue(':messages', $message);
+  $statement->bindValue(':pic', $pic);
+  $statement->execute();
+  
+  $statement->closeCursor();
+
+  echo "<script type='text/javascript'>";
+  echo "alert(Message Sent); location.href('sentmail.php');";
+  echo "</script>";
+  }
+}
+
+?>
 
 </html>
