@@ -1,3 +1,5 @@
+<!-- AUTHORS: WAN LI AND NATALIE ZHANG -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +23,7 @@
 // Session data are accessible from an implicit $_SESSION global array variable
 // after a call is made to the session_start() function.
 ?>
-<?php include "./navbar.php";?>
+<?php include "./navbar.php"; ?>
 
 </script>
 

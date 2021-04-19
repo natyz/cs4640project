@@ -39,7 +39,9 @@ if (isset($_SESSION['user'])) {
           echo ("Can't connect to MySQL Server. Error code: " .
             mysqli_connect_error());
           return null;
-        } ?>
+        }
+
+        ?>
 
         <?php
         $sql = "SELECT * FROM notes WHERE sender='" . $_COOKIE['user'] . "' ORDER BY date";
@@ -49,54 +51,19 @@ if (isset($_SESSION['user'])) {
 
         while ($row = mysqli_fetch_array($exeQuery)) {
           echo  "<div class='card bg-success mb-3' style='width: 18vw; margin-right: 1vw;'>";
-          echo "<img class='card-img-top' src='";
-          echo $row['pic'];
-          echo "' alt='Note Image'>";
+          echo "<form action=" . $_SERVER['PHP_SELF'] . " method='GET'>";
+          echo "<img class='card-img-top' name='pic' src='" . $row['pic'] . "' alt='Note Image' value='" . $row['pic'] . "'>";
           echo  "<div class='card-body'>";
-          echo "<h5 class='card-title'>";
-          echo $row['sender'];
-          echo "</h5>";
-          echo "<p class='card-text'>";
-          echo $row['message'];
-          echo "</p> <p class='card-text'>";
-          echo $row['date'];
-          echo "</p></div></div>";
+          echo "<h5 class='card-title' name='receiver' value='" . $row['receiver'] . "'>";
+          echo $row['receiver'] . "</h5>";
+          echo "<p class='card-text' name='message' value='" . $row['message'] . "'>" . $row['message'] . "</p>";
+          echo "<p class='card-text' name='date' value='" . $row['date'] . "'>" . $row['date'] . "</p>";
+          echo "<input type='submit' name='btnaction' value='delete'>";
+          echo "</div></form></div>";
         }
 
         mysqli_close($con);
         ?>
-
-        <!-- <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-          <img class="card-img-top" src="https://64.media.tumblr.com/tumblr_md923niK1p1qc4uvwo1_400.gifv" alt="Note Image">
-          <div class="card-body">
-            <h5 class="card-title">Checking in</h5>
-            <p class="card-text">Hi Andy! I just wanted to know how...</p>
-          </div>
-        </div>
-
-        <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-          <img class="card-img-top" src="https://i.imgur.com/0xxsg1R.gif?noredirect" alt="Note Image">
-          <div class="card-body">
-            <h5 class="card-title">Checking in</h5>
-            <p class="card-text">Hi Andy! I just wanted to know how...</p>
-          </div>
-        </div>
-
-        <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-          <img class="card-img-top" src="https://i.pinimg.com/originals/9d/29/3a/9d293a6baece811a07a1c2f41d592065.gif" alt="Note Image">
-          <div class="card-body">
-            <h5 class="card-title">Checking in</h5>
-            <p class="card-text">Hi Andy! I just wanted to know how...</p>
-          </div>
-        </div>
-
-        <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-          <img class="card-img-top" src="https://i.pinimg.com/originals/63/3e/8a/633e8a837a39bea065eb23613ce40b06.gif" alt="Note Image">
-          <div class="card-body">
-            <h5 class="card-title">Checking in</h5>
-            <p class="card-text">Hi Andy! I just wanted to know how...</p>
-          </div>
-        </div> -->
 
       </div>
       <!--ADD NOTE BUTTON -->
@@ -109,6 +76,47 @@ if (isset($_SESSION['user'])) {
 } else {
   header('Location: login.php');
   // Force login. If the user has not logged in, redirect to login page
+}
+?>
+
+<?php
+if (isset($_GET['btnaction'])) {
+  try {
+    delete();
+  } catch (Exception $e)       // handle any type of exception
+  {
+    $error_message = $e->getMessage();
+    echo "<p>Error message: $error_message </p>";
+  }
+}
+
+function delete()
+{
+  global $db;
+
+  if (isset($_GET['btnaction'])) {
+    $sender = $_COOKIE['user'];
+    $receiver = $_GET['receiver'];
+    $date = $_GET['date'];
+    $message = $_GET['message'];
+    $pic = $_GET['pic'];
+
+    $query = "DELETE FROM notes WHERE sender=:sender and receiver=:receiver and date=:dates and message=:messages and pic=:pic";  // prevents injection attacks
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(':sender', $sender);
+    $statement->bindValue(':receiver', $receiver);
+    $statement->bindValue(':dates', $date);
+    $statement->bindValue(':messages', $message);
+    $statement->bindValue(':pic', $pic);
+    $statement->execute();
+
+    $statement->closeCursor();
+
+    echo "<script type='text/javascript'>";
+    echo "alert('Message Deleted!'); window.location='sentmail.php'";
+    echo "</script>";
+  }
 }
 ?>
 <!--EVENT LISTENER -->

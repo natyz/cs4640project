@@ -1,3 +1,5 @@
+<!-- AUTHORS: WAN LI AND NATALIE ZHANG -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -142,7 +144,7 @@ function insertData()
     $statement->closeCursor();
 
     echo "<script type='text/javascript'>";
-    echo "alert(Message Sent); location.href('sentmail.php');";
+    echo "alert('Message Sent!'); window.location='sentmail.php'";
     echo "</script>";
   }
 }
