@@ -30,14 +30,14 @@ if (isset($_SESSION['user'])) {
     <div class="note">
       <h1>New Note...</h1>
       <section id="bignote">
-        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
           <h3>From: <?php echo $_COOKIE['user'] ?> <br /></h3><br />
           <h3>Friend's account email: <br /></h3>
           <input type="text" id="receiver" name="receiver">
           <br /><br />
           <!-- WILL AUTOMATICALLY ADD THE DATE WITH THE ANONYMOUS FUNCTION -->
           <h3>Date: </h3>
-          <h4 id="date" name="date"></h4>
+          <input type="text" id="date" name="date">
           <br /><br />
           <h3>URL image for the note: </h3>
           <input type="text" id="pic" name="pic">
@@ -54,7 +54,7 @@ if (isset($_SESSION['user'])) {
             </div>
             <!-- ALLOWS THE USER TO SAVE OR DELETE THE NOTE -->
             <div class="span4 text-right">
-              <input type="submit" name="btnaction" value="SAVE" onclick="btnaction()" />
+              <input type="submit" name="btnaction" value="SAVE">
               <button onclick="deleteNote()">DELETE</button>
             </div>
           </div>
@@ -63,13 +63,13 @@ if (isset($_SESSION['user'])) {
       </section>
     </div>
   </body>
-
 <?php
 } else {
   header('Location: login.php');
   // Force login. If the user has not logged in, redirect to login page
 }
 ?>
+
 <!-- INCLUDE THE JAVASCRIPT FOR FORMATING THE TEXT IN THE TEXTAREA -->
 <script src="note.js"></script>
 <script>
@@ -95,38 +95,60 @@ if (isset($_SESSION['user'])) {
     location.href("mynotes.html");
   }
 </script>
+<?php
+require_once('./connect-db.php');
+$con = new mysqli($hostname, $username, $password, $dbname);
+// Check connection
+if (mysqli_connect_errno()) {
+  echo ("Can't connect to MySQL Server. Error code: " .
+    mysqli_connect_error());
+  return null;
+} ?>
 
 <?php
-require('./connect-db.php');
-// insertData();
+if (isset($_GET['btnaction'])) {
+  try {
+    insertData();
+  } catch (Exception $e)       // handle any type of exception
+  {
+    $error_message = $e->getMessage();
+    echo "<p>Error message: $error_message </p>";
+  }
+}
+?>
 
-function btnaction()
+<?php
+
+function insertData()
 {
   global $db;
 
-  $sender = $_COOKIE['user'];
-  $receiver = $_POST['receiver'];
-  $date = $_POST['date'];
-  $message = $_POST['message'];
-  $pic = $_POST['pic'];
+  if (isset($_GET['btnaction'])) {
+    $sender = $_COOKIE['user'];
+    $receiver = $_GET['receiver'];
+    $date = $_GET['date'];
+    $message = $_GET['message'];
+    $pic = $_GET['pic'];
 
-  $query = "INSERT INTO notes VALUES (:sender, :receiver, :dates, :messages, :pic)";  // prevents injection attacks
+    $query = "INSERT INTO notes VALUES (:sender, :receiver, :dates, :messages, :pic)";  // prevents injection attacks
 
-  $statement = $db->prepare($query);
-  $statement->bindValue(':sender', $sender);
-  $statement->bindValue(':receiver', $receiver);
-  $statement->bindValue(':dates', $date);
-  $statement->bindValue(':messages', $message);
-  $statement->bindValue(':pic', $pic);
-  $statement->execute();
+    $statement = $db->prepare($query);
+    $statement->bindValue(':sender', $sender);
+    $statement->bindValue(':receiver', $receiver);
+    $statement->bindValue(':dates', $date);
+    $statement->bindValue(':messages', $message);
+    $statement->bindValue(':pic', $pic);
+    $statement->execute();
 
-  $statement->closeCursor();
+    $statement->closeCursor();
 
-  echo "<script type='text/javascript'>";
-  echo "alert(Message Sent); location.href('sentmail.php');";
-  echo "</script>";
+    echo "<script type='text/javascript'>";
+    echo "alert(Message Sent); location.href('sentmail.php');";
+    echo "</script>";
+  }
 }
 
 ?>
+
 
 </html>
