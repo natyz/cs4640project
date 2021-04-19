@@ -24,40 +24,7 @@
   <link rel="stylesheet" href="./styles/addnote.css">
 </head>
 <?php session_start(); // make sessions available ?>
-<header>
-  <!--NAVIGATION BAR -->
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color: pink;">
-    <a class="navbar-brand" href="home.php">PeronsalNotes</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="justify-content-end" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="inbox.php">Inbox</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sentmail.php">Sent</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Friends</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Motivation Board</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
-      </ul>
-    </div>
-
-  </nav>
-</header>
+<?php include "./navbar.php";?>
 
 
 <?php
@@ -93,7 +60,7 @@ if (isset($_SESSION['user']))
         </div>
         <!-- ALLOWS THE USER TO SAVE OR DELETE THE NOTE -->
         <div class="span4 text-right">
-          <input type="submit" name="btnaction" value="SAVE"></button>
+          <input type="submit" name="btnaction" value="SAVE">
           <button onclick="deleteNote()">DELETE</button>
         </div>
       </div>
@@ -159,8 +126,7 @@ if (isset($_GET['btnaction'])) {
       echo "<p>Error message: $error_message </p>";
    }   
 }
-?>
-<?php 
+
 function insertData()
 {
   global $db;
