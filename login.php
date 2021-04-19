@@ -156,7 +156,7 @@
         }
 
         $mainpage = "inbox.php";
-        // authenticate();
+        authenticate();
         ?>
     </div>
     <div>
