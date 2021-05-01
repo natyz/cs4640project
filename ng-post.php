@@ -120,5 +120,5 @@ echo json_encode(['content'=>$data, 'response_on'=>$current_date]);
 
 
 
-  
+
  ?>
