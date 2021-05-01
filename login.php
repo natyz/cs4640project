@@ -63,7 +63,7 @@
     $number_attempt = 0; // null;  
     if (isset($_GET['attempt'])) {
         echo "You have unsuccessfully tried to log in " . $_GET['attempt'] . " times.<br/>";
-        echo "You have " . (3 - $_GET['attempt'] . " tries left.");
+        echo "You have " . (3 - $_GET['attempt'] . " tries left.<br/>");
         $number_attempt = intval($_GET['attempt']);
 
         if (intval($_GET['attempt']) >= 3)
