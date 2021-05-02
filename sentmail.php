@@ -59,7 +59,7 @@ if (isset($_SESSION['user'])) {
           echo "<p class='card-text' name='message' value='" . $row['message'] . "'>" . $row['message'] . "</p>";
           echo "<p class='card-text' name='date' value='" . $row['date'] . "'>" . $row['date'] . "</p>";
           echo "<div>";
-          echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"method="POST">';
+          echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"method="GET">';
           echo "<input class='button' type='submit' name='btnaction' value='delete'>";
           echo '<input type="hidden" name="receiver" value="' . $row['receiver'] . '" />'; //receiver
           echo '<input type="hidden" name="message" value="' . $row['message'] . '" />'; // message
@@ -95,10 +95,8 @@ if (isset($_SESSION['user'])) {
 ?>
 
 <?php
-echo "GET BTN ACTION IS" . $_GET['btnaction'];
 if (!empty($_GET['btnaction']) && ($_GET['btnaction'] == 'delete')) {
   try {
-    echo "BEGIN DELETE";
     delete();
   } catch (Exception $e)       // handle any type of exception
   {
@@ -110,9 +108,7 @@ if (!empty($_GET['btnaction']) && ($_GET['btnaction'] == 'delete')) {
 function delete()
 {
   global $db;
-  echo "IN DELETE";
   if (isset($_GET['btnaction'])) {
-    echo "BUTTON PRESSED";
     $sender = $_COOKIE['user'];
     $receiver = $_GET['receiver'];
     $date = $_GET['date'];

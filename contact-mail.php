@@ -42,9 +42,9 @@ try {
     $mail->Body = 'From=' . $_POST['name'] . ': email address=' . $_POST['email'] . ': comment=' . $_POST['comment'];
 
     $mail->send();
-    $confirm = "Thank you. Your comment has been sent. You will be redirected to the home page in 5 seconds.";
+    $confirm = "Thank you. Your comment has been sent. You will be redirected to the home page in 1 seconds.";
     echo '<div class ="center confirm">' . $confirm . '</div>';
-    header('refresh:5; url=home.php');
+    header('refresh:1; url=home.php');
 } catch (Exception $e) {
     $msg = "sorry it was not sent.";
 }
