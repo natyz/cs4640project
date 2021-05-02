@@ -81,41 +81,6 @@ if (isset($_SESSION['user'])) {
         mysqli_close($con);
         ?>
 
-        <!-- <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-        <img class="card-img-top" src="https://64.media.tumblr.com/tumblr_md923niK1p1qc4uvwo1_400.gifv"
-          alt="Note Image">
-        <div class="card-body">
-          <h5 class="card-title">Checking in</h5>
-          <p class="card-text">Hi Andy! I just wanted to know how...</p>
-        </div>
-      </div>
-
-      <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-        <img class="card-img-top" src="https://i.imgur.com/0xxsg1R.gif?noredirect" alt="Note Image">
-        <div class="card-body">
-          <h5 class="card-title">Checking in</h5>
-          <p class="card-text">Hi Andy! I just wanted to know how...</p>
-        </div>
-      </div>
-
-      <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-        <img class="card-img-top" src="https://i.pinimg.com/originals/9d/29/3a/9d293a6baece811a07a1c2f41d592065.gif"
-          alt="Note Image">
-        <div class="card-body">
-          <h5 class="card-title">Checking in</h5>
-          <p class="card-text">Hi Andy! I just wanted to know how...</p>
-        </div>
-      </div>
-
-      <div class="card bg-success mb-3" style="width: 18vw; margin-right: 1vw;">
-        <img class="card-img-top" src="https://i.pinimg.com/originals/63/3e/8a/633e8a837a39bea065eb23613ce40b06.gif"
-          alt="Note Image">
-        <div class="card-body">
-          <h5 class="card-title">Checking in</h5>
-          <p class="card-text">Hi Andy! I just wanted to know how...</p>
-        </div>
-      </div> -->
-
       </div>
     </div>
   </body>

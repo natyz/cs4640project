@@ -53,15 +53,29 @@ if (isset($_SESSION['user'])) {
 
         while ($row = mysqli_fetch_array($exeQuery)) {
           echo  "<div class='card bg-success mb-3' style='width: 18vw; margin-right: 1vw;'>";
-          echo "<form action='" . $_SERVER['PHP_SELF'] . "' method=\"GET\">";
           echo "<img class='card-img-top' name='pic' src='" . $row['pic'] . "' alt='Note Image' value='" . $row['pic'] . "'>";
           echo  "<div class='card-body'>";
           echo "<h5 class='card-title' name='receiver' value='" . $row['receiver'] . "'>" . $row['receiver'] . "</h5>";
           echo "<p class='card-text' name='message' value='" . $row['message'] . "'>" . $row['message'] . "</p>";
           echo "<p class='card-text' name='date' value='" . $row['date'] . "'>" . $row['date'] . "</p>";
-          echo "<input type='submit' name='btnaction' value='delete'>";
-          echo "</div></form></div>";
+          echo "<div>";
+          echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"method="POST">';
+          echo "<input class='button' type='submit' name='btnaction' value='delete'>";
+          echo '<input type="hidden" name="receiver" value="' . $row['receiver'] . '" />'; //receiver
+          echo '<input type="hidden" name="message" value="' . $row['message'] . '" />'; // message
+          echo '<input type="hidden" name="date" value="' . $row['date'] . '" />'; // message
+          echo '<input type="hidden" name="pic" value="' . $row['pic'] . '" />'; // message
+
+          // <input type="hidden" name="task_id" value="<?php echo $task['task_id'] "/>
+          echo "</form></div></div></div>";
         }
+
+        //  echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"method="POST">';
+        //  echo '<input class="btn btn-primary" type="submit" value="Delete" name="action" />';
+        // echo '<input type="hidden" name="receiver" value="' . $row['name'] . '" />';
+        // echo '<input type="hidden" name="pDOB2" value="' . $row['dob'] . '" />';
+        // echo '<input type="hidden" name="pImg2" value="' . $row['image'] . '" />';
+        // echo "</form>";
 
         mysqli_close($con);
         ?>
@@ -81,8 +95,10 @@ if (isset($_SESSION['user'])) {
 ?>
 
 <?php
-if (isset($_GET['btnaction'])) {
+echo "GET BTN ACTION IS" . $_GET['btnaction'];
+if (!empty($_GET['btnaction']) && ($_GET['btnaction'] == 'delete')) {
   try {
+    echo "BEGIN DELETE";
     delete();
   } catch (Exception $e)       // handle any type of exception
   {
@@ -94,14 +110,15 @@ if (isset($_GET['btnaction'])) {
 function delete()
 {
   global $db;
-
+  echo "IN DELETE";
   if (isset($_GET['btnaction'])) {
+    echo "BUTTON PRESSED";
     $sender = $_COOKIE['user'];
     $receiver = $_GET['receiver'];
     $date = $_GET['date'];
     $message = $_GET['message'];
     $pic = $_GET['pic'];
-    echo $$_COOKIE['user'];
+    // echo $$_COOKIE['user'];
 
     $query = "DELETE FROM notes WHERE sender=:sender and receiver=:receiver and date=:dates and message=:messages and pic=:pic";  // prevents injection attacks
 

@@ -63,7 +63,7 @@ export class AppComponent {
       // then we subscribe to this observable
 
       // this.http.get<Order>('http://localhost/cs4640/ng-php/ng-get.php?str='+params)
-      this.http.post<Order>('http://localhost/cs4640/cs4640project/ng-post.php', params)
+      this.http.post<Order>('http://localhost/cs4640project/ng-post.php', params)
          .subscribe((response_from_php) => {
             // Receive a response successfully, do something here
 
