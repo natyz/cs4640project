@@ -82,6 +82,10 @@ if (isset($_SESSION['user'])) {
         ?>
 
       </div>
+      <div class="button">
+        <input class="btn btn-success" id="addFriend" type="button" value="Add new friend" />
+      </div>
+
     </div>
   </body>
 <?php
@@ -91,5 +95,11 @@ if (isset($_SESSION['user'])) {
 }
 
 ?>
+
+<script type="text/javascript">
+  document.getElementById("addFriend").onclick = function() {
+    location.href = "http://localhost:4200/";
+  };
+</script>
 
 </html>

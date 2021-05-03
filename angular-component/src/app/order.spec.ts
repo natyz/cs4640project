@@ -1,3 +1,5 @@
+// AUTHORS: WAN LI AND NATALIE ZHANG
+
 import { Order } from './order';
 
 describe('Order', () => {

@@ -1,3 +1,5 @@
+// AUTHORS: WAN LI AND NATALIE ZHANG
+
 import { Component } from '@angular/core';
 import { Order } from './order';
 

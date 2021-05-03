@@ -1,7 +1,10 @@
+<!-- AUTHORS: WAN LI AND NATALIE ZHANG -->
+
 <?php
 // Natalie and Wan
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
@@ -20,10 +23,9 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
 $data = [];
-foreach ($request as $k => $v)
-{
+foreach ($request as $k => $v) {
   $temp = "$k => $v";
-  $data[0]['post_'.$k] = $v;
+  $data[0]['post_' . $k] = $v;
 }
 // $temp will have the last key-value pair of the array
 
@@ -32,45 +34,45 @@ $current_date = date("Y-m-d");
 // Send response (in json format) back the front end
 $mail = new PHPMailer(true);
 try {
-    $mail->isSMTP();
-    $mail->Mailer = "smtp";
+  $mail->isSMTP();
+  $mail->Mailer = "smtp";
 
-    $mail->SMTPDebug = 0;                     // 1 = Enable verbose debug output. 2 = message only. 0 = nothing. only confirm message
-    $mail->SMTPAuth = TRUE;                   // Enable SMTP authentication
-    $mail->SMTPSecure = "tls";                // Enable TLS encryption, 'ssl' (a predecessor to TSL) is also accepted
-    $mail->Port = 587;                        // TCP port to connect to (587 is a standard port for SMTP)
-    $mail->Host = "smtp.gmail.com";           // Specify main and backup SMTP servers
-    $mail->Username = "natandwan2@gmail.com";  // SMTP username
-    $mail->Password = "natandwan4640";         // SMTP password 
+  $mail->SMTPDebug = 0;                     // 1 = Enable verbose debug output. 2 = message only. 0 = nothing. only confirm message
+  $mail->SMTPAuth = TRUE;                   // Enable SMTP authentication
+  $mail->SMTPSecure = "tls";                // Enable TLS encryption, 'ssl' (a predecessor to TSL) is also accepted
+  $mail->Port = 587;                        // TCP port to connect to (587 is a standard port for SMTP)
+  $mail->Host = "smtp.gmail.com";           // Specify main and backup SMTP servers
+  $mail->Username = "natandwan2@gmail.com";  // SMTP username
+  $mail->Password = "natandwan4640";         // SMTP password 
 
-    $user = $data[0]['post_name'];
-    $friend_email=$data[0]['post_email'];
-  
-    //Recipient
-    $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
-    $mail->addAddress('natandwan2@gmail.com');
+  $user = $data[0]['post_name'];
+  $friend_email = $data[0]['post_email'];
 
-    $mail->isHTML(true);
+  //Recipient
+  $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
+  $mail->addAddress('natandwan2@gmail.com');
 
-    $mail->Subject = 'You got a friend requeset!';
-    $mail->Body = 'From='. $user . ' : friend_email address=' . $friend_email . ': comment=You got a friend request from ' . $user;
+  $mail->isHTML(true);
 
-    $mail->send();
+  $mail->Subject = 'You got a friend requeset!';
+  $mail->Body = 'From=' . $user . ' : friend_email address=' . $friend_email . ': comment=You got a friend request from ' . $user;
 
-    // Send to website's email
-    $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
-    $mail->addAddress('natandwan2@gmail.com');
+  $mail->send();
 
-    $mail->isHTML(true);
+  // Send to website's email
+  $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
+  $mail->addAddress('natandwan2@gmail.com');
 
-    $mail->Subject = 'You sent a friend request!';
-    $mail->Body = 'From=natandwan2@gmail.com : sender_email address=' . $user . ': comment=You sent a friend request to ' . $friend_email;
+  $mail->isHTML(true);
 
-    $mail->send();
+  $mail->Subject = 'You sent a friend request!';
+  $mail->Body = 'From=natandwan2@gmail.com : sender_email address=' . $user . ': comment=You sent a friend request to ' . $friend_email;
+
+  $mail->send();
 } catch (Exception $e) {
-    $msg = "sorry it was not sent.";
+  $msg = "sorry it was not sent.";
 }
-echo json_encode(['content'=>$data, 'response_on'=>$current_date]);
+echo json_encode(['content' => $data, 'response_on' => $current_date]);
 
 // function insertData($data){
 //   global $db;

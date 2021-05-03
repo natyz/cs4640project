@@ -1,3 +1,5 @@
+// AUTHORS: WAN LI AND NATALIE ZHANG
+
 export class Order {
    constructor(
       public name: string,
@@ -5,6 +7,5 @@ export class Order {
       public email: string,
       public status: string,
       public nickname: string
-   ){}
+   ) { }
 }
- 

@@ -1,15 +1,16 @@
+// AUTHORS: WAN LI AND NATALIE ZHANG
 
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Order} from './order';
-import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
+import { Order } from './order';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
-export class OrderService{
-    temp_order = new Order('','','','');
+export class OrderService {
+    temp_order = new Order('', '', '', '');
     //dependency inejction 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) { }
 
     // component.ts calls orderService.processOrder(formdata)
     //processOrder does processing
@@ -19,12 +20,12 @@ export class OrderService{
     sendRequest(data: any): Observable<any> {
         // send a request to the backend
         console.log("HEre")
-       return this.http.post<any>('http://localhost/cs4640/cs4640project/ng-post', data);
+        return this.http.post<any>('http://localhost/cs4640/cs4640project/ng-post', data);
     }
 
-    processOrder(data: any): Observable<any>{
+    processOrder(data: any): Observable<any> {
         //data cleaning
         //data processing
         return this.sendRequest(data);
     }
-} 
+}

@@ -1,3 +1,5 @@
+// AUTHORS: WAN LI AND NATALIE ZHANG
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

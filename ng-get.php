@@ -1,3 +1,5 @@
+<!-- AUTHORS: WAN LI AND NATALIE ZHANG -->
+
 <?php
 
 header('Access-Control-Allow-Origin: http://localhost:4200');
@@ -17,15 +19,12 @@ $getdata = $_GET['str'];     // param sent from Angular is named 'str'
 $request = json_decode($getdata);
 
 $data = [];
-foreach ($request as $k => $v)
-{
-  $data[0]['get_'.$k] = $v;
+foreach ($request as $k => $v) {
+  $data[0]['get_' . $k] = $v;
 }
 // response in php array
 
 
 // Send response (in json format) back the front end
-echo json_encode(['content'=>$data]);
+echo json_encode(['content' => $data]);
 ?>
-
-
