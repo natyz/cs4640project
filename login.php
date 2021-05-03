@@ -36,19 +36,10 @@
                     <a class="nav-link" href="inbox.php">Inbox</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sentmail.php">Sent</a>
+                    <a class="nav-link" href="#p">Sent</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Friends</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Motivation Board</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
             </ul>
         </div>
