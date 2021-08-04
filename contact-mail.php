@@ -18,11 +18,11 @@ try {
     $mail->SMTPSecure = "tls";                // Enable TLS encryption, 'ssl' (a predecessor to TSL) is also accepted
     $mail->Port = 587;                        // TCP port to connect to (587 is a standard port for SMTP)
     $mail->Host = "smtp.gmail.com";           // Specify main and backup SMTP servers
-    $mail->Username = "natandwan2@gmail.com";  // SMTP username
-    $mail->Password = "natandwan4640";         // SMTP password 
+    $mail->Username = "email@gmail.com";  // SMTP username
+    $mail->Password = "insert password";         // SMTP password 
 
     //Recipient
-    $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
+    $mail->setFrom('email@email.com', 'NatAndWan');
     $mail->addAddress($_POST['email']);
 
     $mail->isHTML(true);
@@ -33,8 +33,8 @@ try {
     $mail->send();
 
     // Send to website's email
-    $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
-    $mail->addAddress('natandwan2@gmail.com');
+    $mail->setFrom('email@email.com', 'NatAndWan');
+    $mail->addAddress('email@email.com');
 
     $mail->isHTML(true);
 
