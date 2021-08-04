@@ -42,15 +42,15 @@ try {
   $mail->SMTPSecure = "tls";                // Enable TLS encryption, 'ssl' (a predecessor to TSL) is also accepted
   $mail->Port = 587;                        // TCP port to connect to (587 is a standard port for SMTP)
   $mail->Host = "smtp.gmail.com";           // Specify main and backup SMTP servers
-  $mail->Username = "natandwan2@gmail.com";  // SMTP username
-  $mail->Password = "natandwan4640";         // SMTP password 
+  $mail->Username = "email@email.com";  // SMTP username
+  $mail->Password = "insert password";         // SMTP password 
 
   $user = $data[0]['post_name'];
   $friend_email = $data[0]['post_email'];
 
   //Recipient
-  $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
-  $mail->addAddress('natandwan2@gmail.com');
+  $mail->setFrom('email@email.comm', 'NatAndWan');
+  $mail->addAddress('email@email.com');
 
   $mail->isHTML(true);
 
@@ -60,13 +60,13 @@ try {
   $mail->send();
 
   // Send to website's email
-  $mail->setFrom('natandwan2@gmail.com', 'NatAndWan');
-  $mail->addAddress('natandwan2@gmail.com');
+  $mail->setFrom('email@email.com', 'NatAndWan');
+  $mail->addAddress('email@email.com');
 
   $mail->isHTML(true);
 
   $mail->Subject = 'You sent a friend request!';
-  $mail->Body = 'From=natandwan2@gmail.com : sender_email address=' . $user . ': comment=You sent a friend request to ' . $friend_email;
+  $mail->Body = 'From=email@email.com : sender_email address=' . $user . ': comment=You sent a friend request to ' . $friend_email;
 
   $mail->send();
 } catch (Exception $e) {
@@ -74,47 +74,3 @@ try {
 }
 echo json_encode(['content' => $data, 'response_on' => $current_date]);
 
-// function insertData($data){
-//   global $db;
-//   $friend_name="";
-//   $friend_email="";
-//   $friend_status="";
-//   $nickname="";
-//   $user="";
-//   foreach ($data as $k => $v)
-//   {
-//     $temp = "$k => $v";
-//     if ($k="post_friend_name"){
-//       $friend_name=$v;
-//     }
-//     elseif($k="post_name"){
-//       $user=$v;
-//     }
-//     elseif($k="post_email"){
-//       $friend_email=$v;
-//     }
-//     elseif($k="post_status_option"){
-//       $friend_status=$v;
-//     }
-//     else{
-//       $nickname=$v;
-//     }
-//   }
-//   if($name=""){
-//     $friend_name="myname";
-//     $friend_email="friendname";
-//     $friend_status="f";
-//     $nickname="";
-//     $user="";
-//     $query = "INSERT INTO friend VALUES (:user, :friend_name, :friend_email, :friend_status, :nickname)";  // prevents injection attacks
-
-//     $statement = $db->prepare($query);
-//     $statement->bindValue(':user', $user);
-//     $statement->bindValue(':friend_name', $friend_name);
-//     $statement->bindValue(':friend_email', $friend_email);
-//     $statement->bindValue(':friend_status', $friend_status);
-//     $statement->bindValue(':nickname', $nickname);
-//     $statement->execute();
-  
-//     $statement->closeCursor();
-//   }
